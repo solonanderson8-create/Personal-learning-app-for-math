@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Learn Ladder</title>
+  <meta name="color-scheme" content="light dark">
+  <link rel="stylesheet" href="vendor/katex/katex.min.css">
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="vendor/katex/katex.min.js"></script>
+  <script type="module" src="js/plumbing.js"></script>
+</head>
+<body>
+  <main>
+    <h1>Learn Ladder</h1>
+    <p class="sub">Stage 1: plumbing test. Check all 5 on both devices.</p>
+
+    <section class="card" id="sec-signin">
+      <h2>1. Sign in</h2>
+      <p id="not-configured" class="note" hidden>Firebase isn't connected yet. Claude will do this with you.</p>
+      <form id="signin-form" hidden>
+        <label>Email <input id="email" type="email" autocomplete="username" autocapitalize="off" spellcheck="false" required></label>
+        <label>Password <input id="password" type="password" autocomplete="current-password" required></label>
+        <button type="submit" class="big">Sign in</button>
+      </form>
+      <div id="signed-in" hidden>
+        <p><span aria-hidden="true">✓</span> Signed in.</p>
+        <button id="signout" type="button">Sign out</button>
+      </div>
+      <p id="signin-msg" class="msg" role="status"></p>
+    </section>
+
+    <section class="card" id="sec-sync">
+      <h2>2. Save here, see it there</h2>
+      <p>Type something. Save. Then open the site on your other device.</p>
+      <div class="row">
+        <input id="note" type="text" autocomplete="off" autocapitalize="sentences" placeholder="Type anything">
+        <button id="save" type="button" class="big">Save</button>
+      </div>
+      <p id="save-state" class="state" role="status"></p>
+      <p>In the cloud: <strong id="cloud-text">—</strong></p>
+      <p class="small" id="cloud-from"></p>
+      <button id="reload" type="button">Check again</button>
+    </section>
+
+    <section class="card">
+      <h2>3. Version</h2>
+      <p>Look at the bottom-right corner. It changes with every update.</p>
+    </section>
+
+    <section class="card">
+      <h2>4. Voice test</h2>
+      <button id="voice" type="button" class="big">Test voice</button>
+      <p id="voice-msg" class="msg" role="status"></p>
+    </section>
+
+    <section class="card">
+      <h2>5. Math typing</h2>
+      <p>Try <code>3/4</code>, <code>x^2</code>, <code>sqrt(5)</code>.</p>
+      <input id="math" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="Type math here">
+      <div id="math-view" class="math-view" aria-live="polite"></div>
+    </section>
+  </main>
+
+  <div id="version" class="version"></div>
+</body>
+</html>
