@@ -22,12 +22,12 @@ reading (words from real books, syllables), vision model for handwritten work.
 So: subjects are data; nothing in the code assumes "math" only.
 
 ## Hosting
-- Public repo `solonanderson8-create/learn-ladder`. Never commit anything private
+- Public repo `solonanderson8-create/Personal-learning-app-for-math` (app name: Learn Ladder). Never commit anything private
   (no email address, no UID). The Firebase web config is not secret and is committed.
 - GitHub Pages, "Deploy from a branch": `main`, folder `/ (root)`.
 - NO GitHub Actions workflow files. Nothing is built on GitHub.
 - `main` must always hold the ready-to-serve site. Keep `.nojekyll`.
-- Site lives under a sub-path (`…github.io/learn-ladder/`): relative paths only.
+- Site lives under a sub-path (`…github.io/Personal-learning-app-for-math/`): relative paths only.
 - Third-party code is vendored into `vendor/` by `npm run vendor` (run by Claude,
   output committed). `node_modules/` is never committed.
 - "Publish" = put the finished stage on `main`. If Claude can't, give exact merge taps.
