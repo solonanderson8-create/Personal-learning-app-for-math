@@ -4,7 +4,17 @@
 const synth = typeof window !== 'undefined' ? window.speechSynthesis : undefined;
 
 export function canSpeak() {
-  return !!synth && typeof window.SpeechSynthesisUtterance === 'function';
+  return !!synth && 'SpeechSynthesisUtterance' in window;
+}
+
+// What the browser has, for the voice test. Helps find out why a voice is missing.
+export function speechDetails() {
+  if (typeof window === 'undefined') return 'no window';
+  return [
+    `speech: ${'speechSynthesis' in window ? 'yes' : 'no'}`,
+    `utterance: ${'SpeechSynthesisUtterance' in window ? 'yes' : 'no'}`,
+    `voices: ${window.speechSynthesis?.getVoices?.().length ?? 0}`,
+  ].join(' · ');
 }
 
 // Resolves to 'spoke' when the voice actually started, or a reason it didn't.

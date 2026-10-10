@@ -1,7 +1,7 @@
 // Stage 1 page: proves sign-in, cross-device saving, version, voice and math display.
 
 import { VERSION, BUILT } from './version.js';
-import { canSpeak, speak, voiceCount } from './speech.js';
+import { canSpeak, speak, voiceCount, speechDetails } from './speech.js';
 import { previewLatex } from './math/parse.js';
 import { deviceName } from './device.js';
 import { configured, onUser, signIn, signOutNow, read, explain } from './cloud.js';
@@ -75,7 +75,7 @@ $('reload').addEventListener('click', loadCloud);
 // --- 4. Voice test --------------------------------------------------------
 $('voice').addEventListener('click', async () => {
   if (!canSpeak()) {
-    $('voice-msg').textContent = '✗ This browser cannot speak.';
+    $('voice-msg').textContent = `✗ This browser cannot speak. (${speechDetails()})`;
     return;
   }
   $('voice-msg').textContent = 'Speaking…';
@@ -83,7 +83,7 @@ $('voice').addEventListener('click', async () => {
   const voices = voiceCount();
   $('voice-msg').textContent = result === 'spoke'
     ? `✓ This browser can speak (${voices} voices). Did you hear it?`
-    : `✗ No voice came out (${result}, ${voices} voices).`;
+    : `✗ No voice came out (${result}). ${speechDetails()}`;
 });
 
 // --- 5. Math typing -------------------------------------------------------
